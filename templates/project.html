@@ -22,10 +22,10 @@
   <div class="grid-content collapse shrink avatar-section">
     <nav>
       <ul>
-        <li><a href="https://github.com/azure/kashti/tree/master/docs" target="_blank">
+        <li><a href="https://github.com/Azure/kashti/tree/master/docs" target="_blank">
           Docs
         </a></li>
-        <li><a href="https://github.com/azure/kashti/issues/" target="_blank">
+        <li><a href="https://github.com/Azure/kashti/issues/" target="_blank">
           Support
         </a></li>
       </ul>
@@ -86,7 +86,7 @@
         </div>
 
         <ul class="grid-content build-list" ng-controller="buildsController">
-          <li ng-repeat="build in builds | orderBy: reverse:true" class="medium-grid-block build-item">
+          <li ng-repeat="build in builds | orderBy: build.worker.end_time" class="medium-grid-block build-item" ng-show="build.worker != null">
             <a href="../kashti/#!/build/{{build.id}}" class="grid-block">
 
               <span class="act-state collapse {{ build.worker.status }}" ng-class="{
@@ -111,16 +111,16 @@
                 {{build.provider | limitTo:18 }}<small ng-if="build.provider.length > 18">&#8230;</small>
               </span>
               <span class="act-hash">
-                {{build.commit | limitTo : -6: number.length }}
+                {{build.revision.commit | limitTo : -6: number.length }}
               </span>
               <span class="act-message">
                 <em>#</em>{{build.id | limitTo:34 }}<small ng-if="build.id.length > 34">&#8230;</small>
               </span>
-              <span class="act-time-ago">
-                {{build.worker.status}} <span am-time-ago="build.worker.end_time"></span>.
+              <span class="act-time-ago" style="text-transform:capitalize;">
+                {{ build.worker.end_time | date : "fullDate" | capitalize }}.
               </span>
               <span class="act-time-duration">
-                Ran for <span>{{ build.worker.end_time | amDifference : build.worker.start_time : 'seconds' }} seconds.</span>
+                Ran for <span>{{ build.worker.end_time | amDifference : build.worker.start_time : 'minutes' }} minutes.</span>
               </span>
               <!-- <div class="act-child-jobs">
                 {{ build.jobs.length }}
@@ -136,10 +136,10 @@
           <li class="right microsoft-logo">
             <a href="https://open.microsoft.com/" target="_blank"><img src="assets/images/microsoft.png" /></a>
           </li>
-          <li><span><a href="https://github.com/azure/kashti" target="_blank">KASHTI</a> and <a href="https://github.com/azure/brigade" target="_blank">BRIGADE</a> are licensed under the The MIT License.</span></li>
-          <li><a href="https://github.com/azure/kashti/releases" target="_blank">Changelog</a></li>
-          <li><a href="https://github.com/azure/kashti/tree/master/docs" target="_blank">Documentation</a></li>
-          <li><a href="https://github.com/azure/kashti/" target="_blank">Github</a></li>
+          <li><span><a href="https://github.com/Azure/kashti" target="_blank">KASHTI</a> and <a href="https://github.com/Azure/brigade" target="_blank">BRIGADE</a> are licensed under the The MIT License.</span></li>
+          <li><a href="https://github.com/Azure/kashti/releases" target="_blank">Changelog</a></li>
+          <li><a href="https://github.com/Azure/kashti/tree/master/docs" target="_blank">Documentation</a></li>
+          <li><a href="https://github.com/Azure/kashti/" target="_blank">Github</a></li>
         </ul>
       </footer>
 
