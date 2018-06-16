@@ -9618,6 +9618,8 @@ footer {
         padding-right: 1rem; }
       .project-filters ul li.active {
         color: #3c405e; }
+      .project-filters ul li.unknown {
+        color: #d6dae2; }
       .project-filters ul li:hover {
         background: #eaecef; }
 
@@ -9682,8 +9684,11 @@ footer {
           color: #D10015; }
         .build-list .build-item a .act-state.active div.active {
           display: inline-block;
-          width: 40px;
-          height: 40px; }
+          width: 24px;
+          height: 24px; }
+        .build-list .build-item a .act-state.unknown div.unknown {
+          display: inline-block;
+          color: #d6dae2; }
         .build-list .build-item a .act-state .icon {
           font-size: 1.5rem;
           line-height: 0.5;
@@ -9719,7 +9724,7 @@ footer {
           z-index: 500;
           opacity: 0.5; }
       .build-list .build-item a .act-author {
-        min-width: 13%;
+        min-width: 18%;
         position: relative;
         padding-left: 20px; }
         .build-list .build-item a .act-author .act-avatar {
@@ -9745,7 +9750,7 @@ footer {
       .build-list .build-item a .act-time-ago {
         min-width: 22.5%; }
       .build-list .build-item a .act-time-duration {
-        min-width: 10%; }
+        min-width: 25%; }
       .build-list .build-item a:after {
         content: "Details >";
         color: #37B0E7;
