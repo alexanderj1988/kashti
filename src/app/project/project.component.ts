@@ -24,7 +24,14 @@ export class ProjectComponent implements OnInit {
 
   ngOnInit() {
     this.project = this.route.snapshot.data['project'];
-    this.builds = this.route.snapshot.data['builds'];
+    this.builds = this.route.snapshot.data['builds'].map(build => {
+      if (build.worker) {
+        if (build.worker.end_time === '0001-01-01T00:00:00Z') {
+          build.worker.end_time = build.worker.start_time;
+        }
+      }
+      return build;
+    });
   }
 
   CalculateProviderLogoClass(buildProvider) {
